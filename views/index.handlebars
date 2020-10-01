@@ -1,0 +1,20 @@
+<main>
+
+    <div class="left-col">
+        <h1>Create a New Burger</h1>
+        <form id="create-burger">
+            <textarea type="text" name="burger" cols="30" rows="1"></textarea>
+            <button type="submit">Save Burger!</button>
+        </form>
+    </div>
+
+    <div class="right-col">
+        <h1>Your Burgers</h1>
+        <ul>
+            {{#each burgers}}
+            <li>{{burger_name}}</li>
+            <hr>
+            {{/each}}
+        </ul>
+    </div>
+</main>

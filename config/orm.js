@@ -8,7 +8,7 @@ const connection = require('../config/connection')
 function printQuestionMarks(num) {
     const arr = []
 
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < num; i++) {
         arr.push('?')
     }
 
@@ -53,7 +53,7 @@ const orm = {
     create: function (table, cols, vals, cb) {
         let query = `INSERT INTO ${table}`
         query += ` (${cols.toString()})`
-        quert += ` VALUES (${printQuestionMarks(vals.length)})`
+        query += ` VALUES (${printQuestionMarks(vals.length)})`
 
         connection.query(query, vals, function (err, result) {
             if (err) throw err

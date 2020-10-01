@@ -1,27 +1,27 @@
 const orm = require('../config/orm')
 
-const cat = {
+const burger = {
     all: function (cb) {
-        orm.all('cats', function (res) {
+        orm.all('burgers', function (res) {
             cb(res)
         })
     },
     create: function (cols, vals, cb) {
-        orm.create('cats', cols, vals, function (res) {
+        orm.create('burgers', cols, vals, function (res) {
             cb(res)
         })
     },
     udpate: function (objColVals, condition, cb) {
-        orm.udpate('cats', objColVals, condition, function (res) {
+        orm.udpate('burgers', objColVals, condition, function (res) {
             cb(res)
         })
 
     },
     delete: function (condition, cb) {
-        orm.delete('cats', condition, function (res) {
+        orm.delete('burgers', condition, function (res) {
             cb(res)
         })
     }
 }
 
-module.exports = cat
+module.exports = burger
