@@ -1,33 +1,52 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
 // Import the model (cat.js) to use its database functions.
-const burger = require('../models/burgers')
+const burger = require('../models/burgers');
 
 // Create all our routes and set up logic within those routes where required.
 app.get('/', function (req, res) {
-    burger.all(function (data) {
-        const hbsObject = {
-            burgers: data
-        }
-        console.log(hbsObject)
-        res.render('index', hbsObject)
-    })
-})
+	burger.all(function (data) {
+		const hbsObject = {
+			burgers: data,
+		};
+		// console.log(hbsObject);
+		res.render('index', hbsObject);
+	});
+});
 
 app.post('/api/burgers', function (req, res) {
-    console.log('-----------------------')
-    console.log(req.body.burger)
+	// console.log('-----------------------');
+	// console.log(req.body.burger);
 
-    burger.create([
-        'burger_name'
-    ], [
-        req.body.burger
-    ], function (result) {
-        // Send back the ID of the new quote
-        res.json({ id: result.insertId })
-    })
-})
+	burger.create(['burger_name'], [req.body.burger], function (result) {
+		// Send back the ID of the new quote
+		res.json({ id: result.insertId });
+	});
+});
+
+app.put('/api/burgers/:id', function (req, res) {
+	const condition = `id = ${req.params.id}`;
+
+	// console.log('-----------------');
+	// console.log(condition);
+	console.log('-----------------');
+	console.log(req.body.devoured);
+
+	burger.udpate(
+		{
+			devoured: req.body.devoured,
+		},
+		condition,
+		function (result) {
+			if (result.changedRows == 0) {
+				return res.status(404).end();
+			} else {
+				res.status(200).end();
+			}
+		},
+	);
+});
 
 // app.put('/api/cats/:id', function (req, res) {
 //     const condition = `id = ${req.params.id}`
