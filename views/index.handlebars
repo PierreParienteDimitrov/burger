@@ -1,36 +1,44 @@
-<main>
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>The Burger Application</h1>
+            <hr>
+            <p>This burger application is a small student project that showcase how data flows from a user input to the
+                database.</p>
+        </div>
+    </div>
 
-    <div class="left-col">
-        <h1>Create a New Burger</h1>
-        <form id="create-burger">
-            <textarea type="text" name="burger" cols="30" rows="1"></textarea>
-            <button type="submit">Save Burger!</button>
-        </form>
+    <div class="wrapper">
+        <div class="box">
+            <h2>Create a New Burger</h2>
+            <form id="create-burger">
+                <textarea type="text" name="burger" cols="30" rows="1"></textarea>
+                <button class='primary_btn' type="submit">Save Burger</button>
+            </form>
 
-        <h1>Devore the Burger</h1>
 
-        <ul>
-            {{#each burgers}}
-            {{#unless devoured}}
-            {{> burgers/devour-block devoured=true}}
-            {{/unless}}
-            {{/each}}
-        </ul>
+            <ul>
+                {{#each burgers}}
+                {{#unless devoured}}
+                {{> burgers/devour-block devoured=true}}
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        <div>
+            <h2>Your Devoured Burgers</h2>
+            <ul>
+                {{#each burgers}}
+                {{#if devoured}}
+                <li>
+                    {{burger_name}}
+                </li>
+                {{/if}}
+                {{/each}}
 
+            </ul>
+        </div>
 
     </div>
 
-    <div class="right-col">
-        <h1>Your Devoured Burgers</h1>
-        <ul>
-            {{#each burgers}}
-            {{#if devoured}}
-            <li>
-                {{burger_name}}
-            </li>
-            {{/if}}
-            {{/each}}
-
-        </ul>
-    </div>
-</main>
+</div>
