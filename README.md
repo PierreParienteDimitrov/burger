@@ -5,7 +5,7 @@
 This burger application allows the user to create a burger, then devour it, and save it in its database.
 
 Here is the link to the [Repository](https://github.com/PierreParienteDimitrov/burger)
-Here is the link to the [Heroku](comingsoon)
+Here is the link to the [Heroku](https://ancient-wave-61108.herokuapp.com/)
 
 ## Table of Contents
 
